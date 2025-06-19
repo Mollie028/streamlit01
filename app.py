@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 from audio_recorder_streamlit import audio_recorder
 
-API_BASE = "https://ocr-whisper-api-production-03e9.up.railway.app"
+API_BASE = "https://ocr1-production.up.railway.app"
 
 st.set_page_config(page_title="名片辨識系統", layout="centered")
 st.title("名片辨識 + 語音備註系統")
