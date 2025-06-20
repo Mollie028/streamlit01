@@ -6,8 +6,8 @@ from audio_recorder_streamlit import audio_recorder
 
 API_BASE = "https://ocr1-production-1237ead.up.railway.app"
 
-st.set_page_config(page_title="名片 + 語音辨識 DEMO", layout="centered")
-st.title("📇 名片與語音辨識系統（DEMO）")
+st.set_page_config(page_title="名片 + 語音辨識", layout="centered")
+st.title("📇 名片與語音辨識系統")
 
 st.markdown("---")
 st.subheader("📤 上傳名片圖片")
@@ -27,7 +27,7 @@ if image_file and st.button("🔍 執行 OCR 辨識"):
             st.text_area("OCR 結果", result["text"], height=200)
 
             if result.get("fields"):
-                st.subheader("🤖 LLaMA 欄位萃取結果")
+                st.subheader("名片辨識結果")
                 fields = result["fields"]
                 st.markdown(f'''
                 - 👤 **姓名**：{fields.get("name", "N/A")}
@@ -59,15 +59,5 @@ if audio:
                 st.subheader("📝 語音文字內容")
                 st.text_area("語音辨識結果", result["text"], height=200)
 
-                if result.get("fields"):
-                    st.subheader("🤖 LLaMA 欄位萃取結果")
-                    fields = result["fields"]
-                    st.markdown(f'''
-                    - 👤 **姓名**：{fields.get("name", "N/A")}
-                    - 📞 **電話**：{fields.get("phone", "N/A")}
-                    - ✉️ **信箱**：{fields.get("email", "N/A")}
-                    - 🧳 **職稱**：{fields.get("title", "N/A")}
-                    - 🏢 **公司**：{fields.get("company_name", "N/A")}
-                    ''')
             except Exception as e:
                 st.error(f"❌ Whisper 發生錯誤：{e}")
