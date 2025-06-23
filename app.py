@@ -14,7 +14,7 @@ st.subheader("📤 上傳名片圖片")
 
 image_file = st.file_uploader("請選擇一張名片圖片（JPG/PNG）", type=["jpg", "jpeg", "png"])
 
-if image_file and st.button("🔍 執行 OCR 辨識"):
+if image_file and st.button("🔍 執行名片辨識"):
     with st.spinner("辨識中...請稍候"):
         try:
             files = {"file": (image_file.name, image_file, image_file.type)}
