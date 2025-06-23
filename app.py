@@ -47,7 +47,7 @@ audio = audio_recorder(text="點擊開始錄音，再點擊結束", recording_co
 if audio:
     st.audio(audio, format="audio/wav")
 
-    if st.button("📤 上傳語音進行辨識"):
+    if st.button("上傳語音備註"):
         with st.spinner("辨識中...請稍候"):
             try:
                 files = {"file": ("voice.wav", audio, "audio/wav")}
@@ -56,7 +56,7 @@ if audio:
                 result = res.json()
                 st.success("✅ 語音辨識完成！")
 
-                st.subheader("📝 語音文字內容")
+                st.subheader("📝語音文字內容")
                 st.text_area("語音辨識結果", result["text"], height=200)
 
             except Exception as e:
